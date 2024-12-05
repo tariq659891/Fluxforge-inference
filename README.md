@@ -22,6 +22,16 @@ pip install -r requirements.txt
 
 ### Basic Configuration
 
+## Model Setup
+Before running the inference code, you need to convert the model to FP8 format for optimal memory usage:
+
+1. First, run the conversion script:
+```python
+python convert.py --model_path path/to/flux_model --output_path path/to/flux_model/flux-fp8 --quantization_type qfloat8
+```
+
+2. After conversion, update your config to use the quantized model:
+
 ```python
 from fluxforge import FluxForge, ModelConfig, ModelType
 
@@ -119,6 +129,12 @@ config = ModelConfig(
 - IP-Adapter is currently experimental
 - Training scripts under development
 - Some features may require slightly more VRAM than targeted
+
+# Important Notice
+
+## License
+This repository uses Flux-dev, a non-commercial model by [Black Forest Labs](https://github.com/black-forest-labs/flux). By using this code, you agree to comply with the Flux-dev license agreement and terms of use. Please review the complete license terms at their [official repository](https://github.com/black-forest-labs/flux).
+
 
 ## 📝 License
 
