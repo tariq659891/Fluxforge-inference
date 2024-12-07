@@ -59,21 +59,8 @@ image.save('output.png')
 The ModelConfig class supports various loading strategies:
 
 ```python
-# 1. Loading quantized safetensors
-config = ModelConfig(
-    model_path="path/to/flux_model",
-    transformer_path="path/to/flux_model/flux-fp8.safetensors",
-    transformer_loading_mode="safetensors"
-)
+# 1. You can Load quantized safetensors and base model with quantization but prefered mothod is pre-quantized model from convert.py
 
-# 2. Loading base model with quantization
-config = ModelConfig(
-    model_path="path/to/flux_model",
-    enable_quantization=True,
-    quantization_type="qfloat8"  # or "qint8"
-)
-
-# 3. Loading pre-quantized model
 config = ModelConfig(
     model_path="path/to/flux_model",
     transformer_path="path/to/flux_model/flux-fp8",
