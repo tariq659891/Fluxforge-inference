@@ -4,7 +4,7 @@ FluxForge is a memory-efficient implementation of Flux/Schnell models with suppo
 
 ## 🌟 Features
 
-- ✨ Memory-efficient inference (< 17GB VRAM)
+- ✨ Memory-efficient inference (< 17GB VRAM) - Diffuser based IP adapter implementation. 
 - 🔧 Multiple model loading options (base, quantized, safetensors)
 - 📊 8-bit quantization support
 - 🎯 IP-Adapter support (experimental)
