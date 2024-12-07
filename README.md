@@ -47,12 +47,13 @@ config = ModelConfig(
 # Initialize and run
 forge = FluxForge(config)
 image = forge.generate(
-    prompt="high quality photo of a dog",
+    prompt="A majestic statue clutching a glowing 'FluxForge' sign, standing proudly at the heart of a bustling railway station, its presence commanding attention amidst the flow of travelers.",
     width=1024,
     height=1024
 )
 image.save('output.png')
 ```
+![output1](https://github.com/user-attachments/assets/f05f0283-343d-4cad-8701-5a556e096938)
 
 ### Configuration Options
 
@@ -71,16 +72,41 @@ config = ModelConfig(
 ### IP-Adapter Configuration
 
 ```python
+# Configure for IP-Adapter
 config = ModelConfig(
     model_type=ModelType.FLUX_IP,
-    model_path="path/to/flux_model",
+    model_path="flux_model",
     enable_quantization=True,
-    transformer_path="path/to/flux_model/flux-fp8",
+    transformer_path="flux_model/flux-fp8",
     transformer_loading_mode="quantized",
     image_encoder_path="openai/clip-vit-large-patch14",
-    ip_ckpt="path/to/flux_model/flux-ip-adapter.safetensors"
+    ip_ckpt="flux_model/flux_ip_adapter/ip_adapter.safetensors"
 )
+
+# Initialize forge
+forge = EnhancedFluxForge(config)
+
+# Load reference image for IP-Adapter
+image = Image.open("assets/example_images/statue.jpg")
+
+# Generate with IP-Adapter
+output = forge.generate(
+    prompt="wearing glasses",
+    width=1024,
+    height=1024,
+    guidance_scale=4.0,
+    num_inference_steps=25,
+    seed=123456789,
+    image=image
+)
+
+output.save('luck5.png')
+forge.memory_tracker.print_memory_stats("After Image Generation")
 ```
+The IP adapter is still not functioning as expected. I'm working on aligning its behavior to match the results of the IP adapter in ComfyUI for similar outcomes.
+![statue](https://github.com/user-attachments/assets/d355afbb-ab50-40ac-be8f-e3d637cbefac) 
+![luck3](https://github.com/user-attachments/assets/c1fb6bfe-105e-45ae-bf41-43b24b4f3dfb)
+![luck5](https://github.com/user-attachments/assets/43a527c9-c0a2-49e8-9b2c-b05ddc336c28)
 
 ### Configuration Parameters
 
