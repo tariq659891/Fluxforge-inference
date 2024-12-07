@@ -33,7 +33,7 @@ python convert.py --model_path path/to/flux_model --output_path path/to/flux_mod
 2. After conversion, update your config to use the quantized model in the fluxforge_main.py or externally:
 
 ```python
-from fluxforge_main import FluxForge, ModelConfig, ModelType
+from fluxforge_main import EnhancedFluxForge, ModelConfig, ModelType
 
 # Basic configuration
 config = ModelConfig(
