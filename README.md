@@ -30,10 +30,10 @@ Before running the inference code, you need to convert the model to FP8 format f
 python convert.py --model_path path/to/flux_model --output_path path/to/flux_model/flux-fp8 --quantization_type qfloat8
 ```
 
-2. After conversion, update your config to use the quantized model:
+2. After conversion, update your config to use the quantized model in the fluxforge_main.py or externally:
 
 ```python
-from fluxforge import FluxForge, ModelConfig, ModelType
+from fluxforge_main import FluxForge, ModelConfig, ModelType
 
 # Basic configuration
 config = ModelConfig(
